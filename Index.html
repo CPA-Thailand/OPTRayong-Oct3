@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แจ้งยกเลิก Refund / เลื่อนรอบสอบ — CPA Thailand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--teal:#17A589;--teal-dark:#117A66;--teal-light:#EAFAF6;--white:#fff;--gray-bg:#F5F5F5;--gray-line:#DEDEDE;--gray-text:#666;--text:#333;--red:#CC3333}
+body{font-family:'Sarabun',sans-serif;background:var(--gray-bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;font-size:15px}
+.topbar{background:var(--teal-dark);padding:6px 32px;display:flex;justify-content:flex-end;gap:20px}
+.topbar a{color:rgba(255,255,255,.75);font-size:12px;text-decoration:none}
+.topbar a:hover{color:#fff}
+header{background:var(--white);border-bottom:3px solid var(--teal);padding:10px 32px;display:flex;align-items:center;justify-content:space-between}
+.hl{display:flex;align-items:center;gap:14px}
+.hl img{height:52px;object-fit:contain}
+.brand{border-left:2px solid var(--gray-line);padding-left:14px}
+.brand .name{color:var(--teal-dark);font-size:15px;font-weight:700;line-height:1.2}
+.brand .sub{color:var(--gray-text);font-size:11px;font-weight:300}
+.hr img{height:30px;object-fit:contain}
+.band{background:var(--teal);padding:28px 32px 24px;text-align:center}
+.band h1{color:#fff;font-size:clamp(20px,4vw,28px);font-weight:700;margin-bottom:6px}
+.band p{color:rgba(255,255,255,.85);font-size:13.5px;font-weight:300}
+.main{flex:1;display:flex;justify-content:center;padding:32px 16px 48px}
+.card{background:var(--white);border:1px solid var(--gray-line);border-top:3px solid var(--teal);border-radius:4px;width:100%;max-width:560px;padding:28px 28px 32px;box-shadow:0 2px 12px rgba(0,0,0,.06);align-self:flex-start}
+.steps{display:flex;gap:6px;margin-bottom:18px}
+.steps i{flex:1;height:4px;border-radius:2px;background:var(--gray-line)}
+.steps i.on{background:var(--teal)}
+.card-title{font-size:14px;font-weight:700;color:var(--teal-dark);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--gray-line);display:flex;align-items:center;gap:8px}
+.card-title::before{content:'';width:4px;height:16px;background:var(--teal);border-radius:2px}
+.field{margin-bottom:18px}
+label.l{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+label.l .req{color:var(--teal-dark);margin-left:2px}
+.hint{font-size:11.5px;color:var(--gray-text);margin-top:4px;line-height:1.6}
+input[type=text],input[type=tel],input[type=email]{width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:3px;font:inherit;font-size:14px;color:var(--text);background:#fff;outline:none;transition:.15s}
+input:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(23,165,137,.12)}
+input.error{border-color:var(--red);box-shadow:0 0 0 2px rgba(204,51,51,.1)}
+.err{color:var(--red);font-size:12.5px;margin-top:4px;min-height:1em}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--gray-line);border-radius:4px;margin-bottom:10px;cursor:pointer;transition:.15s}
+.opt:hover{border-color:var(--teal)}
+.opt:has(input:checked){border-color:var(--teal);background:var(--teal-light)}
+.opt input{margin-top:5px;accent-color:var(--teal)}
+.opt b{display:block;font-size:14px}.opt span{font-size:12.5px;color:var(--gray-text)}
+.notice{border-radius:6px;overflow:hidden;margin-bottom:18px}
+.notice .nh{background:var(--teal-dark);padding:7px 16px;color:rgba(255,255,255,.9);font-size:12px;font-weight:600}
+.notice .nb{padding:12px 16px;border:1px solid var(--gray-line);border-top:none;border-radius:0 0 6px 6px;color:var(--teal-dark);font-size:13px;line-height:1.8}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.7;cursor:pointer}
+.chk input{margin-top:5px;accent-color:var(--teal)}
+.row{display:flex;gap:10px;margin-top:22px}
+button{font:inherit;font-size:15px;font-weight:600;padding:13px 18px;border-radius:3px;cursor:pointer;border:1px solid var(--teal);transition:.15s}
+.pri{flex:1;background:var(--teal);color:#fff}.pri:hover{background:var(--teal-dark)}
+.sec{background:#fff;color:var(--teal-dark)}.sec:hover{background:var(--teal-light)}
+.opt.off{opacity:.45;cursor:not-allowed;background:#f3f3f3}.opt.off:hover{border-color:var(--gray-line)}
+.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px;margin-bottom:16px}
+.day{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;background:#fff;color:var(--text);border:1px solid var(--gray-line)}
+.day b{font-size:18px;line-height:1.2}.day small{font-size:11px;color:var(--gray-text)}
+.day:hover:not(:disabled){border-color:var(--teal);background:var(--teal-light)}
+.day.on{background:var(--teal);border-color:var(--teal);color:#fff}.day.on small{color:rgba(255,255,255,.85)}
+.day:disabled{background:#f3f3f3;border-color:var(--gray-line);color:#aaa;opacity:.6}
+button:disabled{background:#ccc;border-color:#ccc;color:#fff;cursor:not-allowed}
+dl{margin:0}dt{color:var(--gray-text);font-size:12px;margin-top:12px}dd{font-weight:600;word-break:break-all}
+.ve{border:1px solid #EEBEBE;border-left:4px solid var(--red);border-radius:3px;background:#FDF5F5;padding:12px 14px;color:#7A2020;font-size:13.5px;margin-top:14px}
+.done{text-align:center;padding:10px 0}
+.done .tick{width:56px;height:56px;border-radius:50%;background:var(--teal);color:#fff;font-size:30px;line-height:56px;margin:0 auto 14px}
+.done p{line-height:1.8}
+footer{background:#2B2B2B;padding:18px 32px;text-align:center;font-size:11px;color:rgba(255,255,255,.4);line-height:1.7}
+@media(max-width:520px){.topbar,header,footer{padding-left:16px;padding-right:16px}.band{padding:24px 16px 20px}.card{padding:20px 16px 24px}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="tel:022607061">📞 02-260-7061 ต่อ 101</a>
+  <a href="https://cpathailand.co.th" target="_blank" rel="noopener">🌐 cpathailand.co.th</a>
+</div>
+<header>
+  <div class="hl">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlL0U2PIgQ6UVn9C2mhB8HXaf63qBx_OYxdQ&s" alt="CPA Thailand" onerror="this.style.display='none'">
+    <div class="brand"><div class="name">CPA (Thailand)</div><div class="sub">Center for Professional Assessment</div></div>
+  </div>
+  <div class="hr"><img src="https://perpignan.alfmed.com/wp-content/uploads/2025/03/TOEIC-logo-green.png" alt="TOEIC" onerror="this.style.display='none'"></div>
+</header>
+<div class="band">
+  <h1>แบบฟอร์มแจ้งความประสงค์ยกเลิกสอบ หรือเลื่อนรอบสอบสำหรับผู้สอบที่จองสอบ TOEIC Listening & Reading Paper - Based Testing ทาง CPA LINE SHOPPING</h1>
+</div>
+<div class="main"><div class="card"><div class="steps" id="bar"></div><div id="view"></div></div></div>
+<footer>&copy; 2026 Center for Professional Assessment (Thailand). All rights reserved.<br>ETS, TOEIC are registered trademarks of ETS, used under license in Thailand.</footer>
+
+<script>
+// ▼ วาง URL ของ Web App (Google Apps Script ของฟอร์มนี้) ตรงนี้
+const API_URL = "URL";
+
+const DATES=(()=>{
+  const D=['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+  const M=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+  const BLOCK_DAYS={"2026-10-03":"ไม่เปิดให้จอง","2026-10-13":"วันหยุด ไม่เปิดให้จอง"};
+  const BLOCK_ROUNDS=["2026-10-17|13:30"], TIMES=["09:00","13:30"], out=[];
+  for(let t=Date.UTC(2026,8,29);t<=Date.UTC(2026,9,17);t+=864e5){
+    const dt=new Date(t),iso=dt.toISOString().slice(0,10);
+    TIMES.forEach(tm=>{
+      const v=iso+"|"+tm, off=!!BLOCK_DAYS[iso]||BLOCK_ROUNDS.includes(v);
+      out.push({v,day:iso,off,note:BLOCK_DAYS[iso]||(off?"ไม่เปิดให้จอง":""),
+        t:`วัน${D[dt.getUTCDay()]}ที่ ${dt.getUTCDate()} ${M[dt.getUTCMonth()]} ${dt.getUTCFullYear()+543} / รอบเวลา ${tm.replace(":",".")} น.`,
+        en:`${dt.getUTCDate()} ${M[dt.getUTCMonth()].slice(0,3)} · ${tm}`});
+    });
+  }
+  return out;
+})();
+const S={step:"info",hist:[],d:{id:"",name:"",phone:"",email:"",option:"",bank:"",acct:"",ack:false,date:""}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const STEPS=["info","option","detail","review"];
+const title=t=>`<div class="card-title">${t}</div>`;
+const nav=(next="ถัดไป",back=true)=>`<div class="row">${back?'<button class="sec" id="back">ย้อนกลับ</button>':''}<button class="pri" id="next">${next}</button></div>`;
+
+function validId(id){
+  if(!/^\d{13}$/.test(id))return false;
+  let s=0;for(let i=0;i<12;i++)s+=(+id[i])*(13-i);
+  return (11-(s%11))%10===+id[12];
+}
+function go(s){S.hist.push(S.step);S.step=s;render()}
+function back(){S.step=S.hist.pop()||"info";render()}
+function api(p){return fetch(API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)}).then(r=>r.json())}
+function setErr(k,m){const e=$("#e_"+k),i=$("#"+k);if(e)e.textContent=m;if(i)i.classList.toggle("error",!!m)}
+
+function render(){
+  const i=STEPS.indexOf(S.step);
+  $("#bar").innerHTML=STEPS.map((_,k)=>`<i class="${k<=i?"on":""}"></i>`).join("");
+  $("#bar").style.display=i<0?"none":"flex";
+  ({info,option,detail,review,done})[S.step]();
+  const b=$("#back");if(b)b.onclick=back;
+  window.scrollTo(0,0);
+}
+
+function info(){
+  const d=S.d;
+  $("#view").innerHTML=title("ข้อมูลส่วนตัว")+`
+  <div class="field"><label class="l" for="id">เลขบัตรประชาชน 13 หลัก <span class="req">*</span></label>
+    <input id="id" type="text" inputmode="numeric" maxlength="13" autocomplete="off" value="${esc(d.id)}"><div class="err" id="e_id"></div></div>
+  <div class="field"><label class="l" for="name">ชื่อ-นามสกุล (ภาษาอังกฤษเท่านั้น) <span class="req">*</span></label>
+    <input id="name" type="text" autocomplete="name" placeholder=" " value="${esc(d.name)}"><div class="err" id="e_name"></div></div>
+  <div class="field"><label class="l" for="phone">เบอร์โทรศัพท์ 10 หลัก <span class="req">*</span></label>
+    <input id="phone" type="tel" inputmode="numeric" maxlength="10" value="${esc(d.phone)}"><div class="err" id="e_phone"></div></div>
+  <div class="field"><label class="l" for="email">อีเมล <span class="req">*</span></label>
+    <input id="email" type="email" autocomplete="email" value="${esc(d.email)}"><div class="err" id="e_email"></div></div>`+nav("ถัดไป",false);
+  $("#next").onclick=async()=>{
+    const v={id:$("#id").value.replace(/\D/g,""),name:$("#name").value.trim().toUpperCase().replace(/\s+/g," "),phone:$("#phone").value.replace(/\D/g,""),email:$("#email").value.trim()};
+    const e={
+      id:validId(v.id)?"":"เลขบัตรประชาชนไม่ถูกต้อง (ต้องเป็นตัวเลข 13 หลัก)",
+      name:/^[A-Za-z][A-Za-z .'-]*\s[A-Za-z][A-Za-z .'-]*$/.test(v.name)?"":"กรอกชื่อและนามสกุลเป็นภาษาอังกฤษ",
+      phone:/^0\d{9}$/.test(v.phone)?"":"เบอร์โทรต้องมี 10 หลัก เช่น 0812345678",
+      email:/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)?"":"รูปแบบอีเมลไม่ถูกต้อง"};
+    for(const k in e)setErr(k,e[k]);
+    if(Object.values(e).some(Boolean))return;
+    Object.assign(S.d,v);
+    const b=$("#next");b.disabled=true;b.textContent="กำลังตรวจสอบ...";
+    try{const r=await api({action:"check",id:v.id});
+      if(r.exists){setErr("id","เลขบัตรนี้ส่งข้อมูลแล้ว กรอกซ้ำไม่ได้ หากต้องการแก้ไขให้ติดต่อศูนย์สอบ");b.disabled=false;b.textContent="ถัดไป";return}
+    }catch(_){setErr("id","เชื่อมต่อระบบไม่ได้ กรุณาลองใหม่อีกครั้ง");b.disabled=false;b.textContent="ถัดไป";return}
+    go("option");
+  };
+}
+
+function option(){
+  const d=S.d;
+  $("#view").innerHTML=title("เลือกความประสงค์")+`
+  <label class="opt"><input type="radio" name="o" value="refund" ${d.option==="refund"?"checked":""}><div><b>1. ยกเลิกและขอ Refund ค่าสอบคืน (แจ้งความประสงค์ภายในวันที่ 30 กันยายน 2569 ก่อนเวลา 12.00 น.)</b><span>ดำเนินการคืนเงินภายใน 7 วัน</span></div></label>
+  <label class="opt"><input type="radio" name="o" value="move" ${d.option==="move"?"checked":""}><div><b>2. เลื่อนรอบสอบ</b><span>เฉพาะรอบสอบ Paper Based Testing วันที่ 29 กันยายน - 17 ตุลาคม 2569 เท่านั้น</span></div></label>
+  <div class="err" id="e_o"></div>`+nav();
+  $("#next").onclick=()=>{
+    const c=document.querySelector('input[name=o]:checked');
+    if(!c){$("#e_o").textContent="กรุณาเลือก 1 ตัวเลือก";return}
+    if(S.d.option&&S.d.option!==c.value){S.d.date="";S.d.ack=false}
+    S.d.option=c.value;go("detail");
+  };
+}
+
+function detail(){
+  const d=S.d;
+  if(d.option==="refund"){
+    $("#view").innerHTML=title("ข้อมูลบัญชีสำหรับรับเงินคืน")+`
+    <div class="field"><label class="l" for="bank">ธนาคาร <span class="req">*</span></label>
+      <input id="bank" type="text" placeholder="เช่น กสิกรไทย" value="${esc(d.bank)}"><div class="err" id="e_bank"></div></div>
+    <div class="field"><label class="l" for="acct">เลขบัญชีธนาคาร <span class="req">*</span></label>
+      <input id="acct" type="text" inputmode="numeric" maxlength="15" value="${esc(d.acct)}">
+      <div class="hint">ต้องเป็นเลขบัญชีธนาคารที่มีชื่อบัญชีตรงกับชื่อ-นามสกุลของผู้สอบเท่านั้น (ไม่รับหมายเลข PromptPay)</div><div class="err" id="e_acct"></div></div>
+    <label class="chk"><input type="checkbox" id="ack" ${d.ack?"checked":""}><span>รับทราบ: ทางศูนย์สอบจะดำเนินการโอนเงินคืน ภายใน 7 วัน หลังจากได้รับข้อมูล และตรวจสอบอย่างสมบูรณ์แล้ว</span></label>
+    <div class="err" id="e_ack"></div>`+nav();
+    $("#next").onclick=()=>{
+      const bank=$("#bank").value.trim(),acct=$("#acct").value.replace(/\D/g,""),ack=$("#ack").checked;
+      const e={bank:bank?"":"กรอกชื่อธนาคาร",acct:/^\d{10,15}$/.test(acct)?"":"เลขบัญชีต้องเป็นตัวเลข 10-15 หลัก",ack:ack?"":"กรุณากดรับทราบก่อนดำเนินการต่อ"};
+      for(const k in e)setErr(k,e[k]);
+      if(Object.values(e).some(Boolean))return;
+      Object.assign(S.d,{bank,acct,ack});go("review");
+    };
+  }else{
+    $("#view").innerHTML=title("เลื่อนรอบสอบ")+`
+    <div class="notice"><div class="nh">คำอธิบายเพิ่มเติม</div><div class="nb">สำหรับผู้ที่ต้องการเลื่อนรอบสอบ TOEIC Listening & Reading Paper - Based Testing CPA (Thailand) กำหนดวันและเวลาสอบ ดังนี้ 
+รอบสอบเวลา 9.00 น. และ 13.30 น. ของวันอังคารที่ 29 กันยายน - วันเสาร์ 17 ตุลาคม 2569 (ยกเว้นวันที่ 13 ตุลาคม 2569)
+กรณีผู้ที่ไม่สะดวกเลื่อนสอบตามวันและเวลาดังกล่าว ขอให้ผู้สอบทำการยกเลิก Refund ค่าสอบคืน และทำการจองสอบรอบใหม่ทาง CPA LINE SHOPPING หรือ CPA Call Center</div></div>`+
+    `<div style="font-size:13px;font-weight:600;margin-bottom:8px">1. เลือกวันสอบ</div>
+    <div class="days" id="days"></div>
+    <div class="hint" style="margin:-8px 0 16px">วันที่เป็นสีเทาไม่สามารถเลือกได้</div>
+    <div id="rounds"></div><div class="err" id="e_dt"></div>`+nav();
+    const TH=['อา','จ','อ','พ','พฤ','ศ','ส'];
+    const MS=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+    const byDay={};DATES.forEach(x=>(byDay[x.day]=byDay[x.day]||[]).push(x));
+    let selDay=S.d.date?S.d.date.split("|")[0]:"";
+    const draw=()=>{
+      $("#days").innerHTML=Object.keys(byDay).map(k=>{
+        const off=byDay[k].every(x=>x.off),dt=new Date(k+"T00:00:00Z");
+        return `<button type="button" class="day${k===selDay?" on":""}" data-d="${k}" ${off?"disabled":""}><small>${TH[dt.getUTCDay()]}</small><b>${dt.getUTCDate()}</b><small>${MS[dt.getUTCMonth()]}</small></button>`;
+      }).join("");
+      $("#rounds").innerHTML=selDay?`<div style="font-size:13px;font-weight:600;margin-bottom:8px">2. เลือกรอบสอบ</div>`+
+        byDay[selDay].map(x=>`<label class="opt${x.off?" off":""}"><input type="radio" name="dt" value="${x.v}" ${S.d.date===x.v?"checked":""} ${x.off?"disabled":""}><div><b>รอบ ${x.v.split("|")[1].replace(":",".")} น.</b><span>${x.off?x.note:x.t}</span></div></label>`).join(""):"";
+    };
+    draw();
+    $("#days").onclick=e=>{
+      const b=e.target.closest(".day");if(!b||b.disabled)return;
+      selDay=b.dataset.d;
+      if(!S.d.date.startsWith(selDay))S.d.date="";
+      $("#e_dt").textContent="";draw();
+    };
+    $("#next").onclick=()=>{
+      const c=document.querySelector('input[name=dt]:checked');
+      if(!c){$("#e_dt").textContent=selDay?"กรุณาเลือกรอบสอบ":"กรุณาเลือกวันสอบ";return}
+      S.d.date=c.value;go("review");
+    };
+  }
+}
+
+function review(){
+  const d=S.d,dt=DATES.find(x=>x.v===d.date);
+  $("#view").innerHTML=title("ตรวจสอบข้อมูล")+`<dl>
+    <dt>เลขบัตรประชาชน</dt><dd>${esc(d.id)}</dd>
+    <dt>ชื่อ-นามสกุล</dt><dd>${esc(d.name)}</dd>
+    <dt>เบอร์โทรศัพท์</dt><dd>${esc(d.phone)}</dd>
+    <dt>อีเมล</dt><dd>${esc(d.email)}</dd>
+    <dt>ความประสงค์</dt><dd>${d.option==="refund"?"ยกเลิกและขอ Refund ค่าสอบคืน":"เลื่อนรอบสอบ"}</dd>
+    ${d.option==="refund"?`<dt>ธนาคาร</dt><dd>${esc(d.bank)}</dd><dt>เลขบัญชี</dt><dd>${esc(d.acct)}</dd>`:`<dt>วันสอบใหม่</dt><dd>${dt?dt.t+" ":""}</dd>`}
+  </dl><div id="e_sub"></div>`+nav("ยืนยันและส่งข้อมูล");
+  $("#next").onclick=async()=>{
+    const b=$("#next");b.disabled=true;b.textContent="กำลังส่งข้อมูล...";
+    try{const r=await api({action:"submit",...S.d});
+      if(r.ok){S.hist=[];S.step="done";render();return}
+      $("#e_sub").innerHTML=`<div class="ve">${esc(r.message||"ส่งข้อมูลไม่สำเร็จ")}</div>`;
+    }catch(_){$("#e_sub").innerHTML='<div class="ve">เชื่อมต่อระบบไม่ได้ กรุณาลองใหม่อีกครั้ง</div>'}
+    b.disabled=false;b.textContent="ยืนยันและส่งข้อมูล";
+  };
+}
+
+function done(){
+  const d=S.d,dt=DATES.find(x=>x.v===d.date);
+  $("#view").innerHTML=`<div class="done"><div class="tick">✓</div>`+(d.option==="refund"
+    ?`<p><b>ทางศูนย์ได้รับข้อมูลการขอยกเลิก Refund ค่าสอบคืนของท่านเรียบร้อยแล้ว</b><br>ทางศูนย์สอบจะดำเนินการโอนเงินคืนผ่านบัญชีธนาคารตามที่ท่านได้ระบุไว้ ภายใน 7 วัน หลังจากได้รับข้อมูล และตรวจสอบอย่างสมบูรณ์แล้ว</p>`
+    :`<p><b>เปลี่ยนแปลงรอบสอบให้ท่านเรียบร้อยแล้ว</b><br>รอบสอบใหม่: ${dt?dt.t:""} <br>ระบบส่งอีเมลยืนยันไปที่ ${esc(d.email)} แล้ว</p>`)+`</div>`;
+}
+render();
+</script>
+</body>
+</html>
