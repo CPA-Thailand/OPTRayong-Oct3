@@ -75,7 +75,7 @@ footer{background:#2B2B2B;padding:18px 32px;text-align:center;font-size:11px;col
   <div class="hr"><img src="logo-toeic.png" alt="TOEIC" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://perpignan.alfmed.com/wp-content/uploads/2025/03/TOEIC-logo-green.png'}else{this.style.display='none'}"></div>
 </header>
 <div class="band">
-  <h1>แบบฟอร์มแจ้งความประสงค์ยกเลิกสอบ หรือเลื่อนรอบสอบสำหรับผู้สอบที่จองสอบ TOEIC Listening & Reading Paper - Based Testing ทาง CPA LINE SHOPPING</h1>
+  <h1>แบบฟอร์มแจ้งความประสงค์เลื่อนรอบสอบ หรือขอคืนเงินค่าสอบ (Refund) สำหรับผู้ที่จองสอบ CPA Open Testing จังหวัดระยอง ที่ IRPC Technological college รอบสอบวันเสาร์ที่ 3 ตุลาคม 2569</h1>
 </div>
 <div class="main"><div class="card"><div class="steps" id="bar"></div><div id="view"></div></div></div>
 <footer>&copy; 2026 Center for Professional Assessment (Thailand). All rights reserved.<br>ETS, TOEIC are registered trademarks of ETS, used under license in Thailand.</footer>
@@ -98,7 +98,7 @@ const DATES=(()=>{
   SESSIONS.forEach(s=>{
     const dt=new Date(s.day+"T00:00:00Z");
     const dl=`วัน${D[dt.getUTCDay()]}ที่ ${dt.getUTCDate()} ${M[dt.getUTCMonth()]} ${dt.getUTCFullYear()+543}`;
-    TIMES.forEach(tm=>out.push({v:s.day+"|"+tm,day:s.day,venue:s.venue,dl,t:`${dl} เวลา ${tm.replace(":",".")} น. ณ ${s.venue}`}));
+    TIMES.forEach(tm=>out.push({v:s.day+"|"+tm,day:s.day,venue:s.venue,dl,t:`${dl} เวลา ${tm.replace(":",".")} น. ${s.venue}`}));
   });
   return out;
 })();
@@ -160,7 +160,7 @@ function info(){
 function option(){
   const d=S.d;
   $("#view").innerHTML=title("เลือกความประสงค์")+`
-  <label class="opt"><input type="radio" name="o" value="refund" ${d.option==="refund"?"checked":""}><div><b>1. ยกเลิกและขอ Refund ค่าสอบคืน (แจ้งความประสงค์ภายในวันที่ 30 กันยายน 2569 ก่อนเวลา 12.00 น.)</b><span>ดำเนินการคืนเงินภายใน 7 วัน</span></div></label>
+  <label class="opt"><input type="radio" name="o" value="refund" ${d.option==="refund"?"checked":""}><div><b>1.  ยกเลิกสอบและขอคืนเงินค่าสอบ (แจ้งความประสงค์ภายในวันที่ 5 ตุลาคม 2569 ก่อนเวลา 12.00 น.)</b><span>CPA (Thailand) จะดำเนินการคืนเงินค่าสอบภายในวันที่ 14 ตุลาคม 2569</span></div></label>
   <label class="opt"><input type="radio" name="o" value="move" ${d.option==="move"?"checked":""}><div><b>2. เลื่อนรอบสอบ</b><span>เลือกได้เฉพาะวันเสาร์ที่ 17 ตุลาคม, 31 ตุลาคม และ 28 พฤศจิกายน 2569 เท่านั้น</span></div></label>
   <div class="err" id="e_o"></div>`+nav();
   $("#next").onclick=()=>{
@@ -180,7 +180,7 @@ function detail(){
     <div class="field"><label class="l" for="acct">เลขบัญชีธนาคาร <span class="req">*</span></label>
       <input id="acct" type="text" inputmode="numeric" maxlength="15" value="${esc(d.acct)}">
       <div class="hint">ต้องเป็นเลขบัญชีธนาคารที่มีชื่อบัญชีตรงกับชื่อ-นามสกุลของผู้สอบเท่านั้น (ไม่รับหมายเลข PromptPay)</div><div class="err" id="e_acct"></div></div>
-    <label class="chk"><input type="checkbox" id="ack" ${d.ack?"checked":""}><span>รับทราบ: ทางศูนย์สอบจะดำเนินการโอนเงินคืน ภายใน 7 วัน หลังจากได้รับข้อมูล และตรวจสอบอย่างสมบูรณ์แล้ว</span></label>
+    <label class="chk"><input type="checkbox" id="ack" ${d.ack?"checked":""}><span>รับทราบ : CPA (Thailand) จะดำเนินการคืนเงินค่าสอบและค่าจัดส่ง EMS จำนวน 1,850 บาท ผ่านบัญชีธนาคารภายในวันที่ 14 ตุลาคม 2569</span></label>
     <div class="err" id="e_ack"></div>`+nav();
     $("#next").onclick=()=>{
       const bank=$("#bank").value.trim(),acct=$("#acct").value.replace(/\D/g,""),ack=$("#ack").checked;
@@ -191,12 +191,7 @@ function detail(){
     };
   }else{
     $("#view").innerHTML=title("เลื่อนรอบสอบ")+`
-    <div class="notice"><div class="nh">คำอธิบายเพิ่มเติม</div><div class="nb">สำหรับผู้ที่ต้องการเลื่อนรอบสอบ TOEIC Listening & Reading Paper - Based Testing CPA (Thailand) กำหนดวันและสถานที่สอบ ดังนี้
-1. จังหวัดชลบุรี (Amari Bangsaen) วันเสาร์ที่ 17 ตุลาคม 2569
-2. จังหวัดระยอง (IRPC Technological college) วันเสาร์ที่ 31 ตุลาคม 2569
-3. จังหวัดระยอง (IRPC Technological college) วันเสาร์ที่ 28 พฤศจิกายน 2569
-ทุกวันมี 2 รอบสอบ คือ เวลา 9.00 น. และ 14.00 น.
-กรณีผู้ที่ไม่สะดวกเลื่อนสอบตามวันและสถานที่ดังกล่าว ขอให้ผู้สอบทำการยกเลิก Refund ค่าสอบคืน และทำการจองสอบรอบใหม่ทาง CPA LINE SHOPPING หรือ CPA Call Center</div></div>
+    <div class="notice"><div class="nh">คำอธิบายเพิ่มเติม</div><div class="nb">กรณีไม่สะดวกเลื่อนรอบสอบในวันที่ทางศูนย์สอบฯ กำหนด ขอให้ทำการเลือกวิธีการขอคืนเงินค่าสอบ (Refund) และแจ้งความประสงค์ภายในวันที่ 5 ตุลาคม 2569 ก่อนเวลา 12.00 น. เท่านั้น หากเกินเวลาที่กำหนดจะไม่สามารถขอคืนเงินได้ทุกกรณี</div></div>
     <div style="font-size:13px;font-weight:600;margin-bottom:8px">1. เลือกวันสอบ</div>
     <div id="days"></div>
     <div id="rounds"></div><div class="err" id="e_dt"></div>`+nav();
