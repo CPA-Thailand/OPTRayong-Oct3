@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--teal:#17A589;--teal-dark:#117A66;--teal-light:#EAFAF6;--white:#fff;--gray-bg:#F5F5F5;--gray-line:#DEDEDE;--gray-text:#666;--text:#333;--red:#CC3333}
+:root{--teal:#1B5E3A;--teal-dark:#0F3D25;--teal-light:#E8F3EC;--white:#fff;--gray-bg:#F5F5F5;--gray-line:#DEDEDE;--gray-text:#666;--text:#333;--red:#CC3333}
 body{font-family:'Sarabun',sans-serif;background:var(--gray-bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;font-size:15px}
 .topbar{background:var(--teal-dark);padding:6px 32px;display:flex;justify-content:flex-end;gap:20px}
 .topbar a{color:rgba(255,255,255,.75);font-size:12px;text-decoration:none}
@@ -22,7 +22,6 @@ header{background:var(--white);border-bottom:3px solid var(--teal);padding:10px 
 .hr img{height:30px;object-fit:contain}
 .band{background:var(--teal);padding:28px 32px 24px;text-align:center}
 .band h1{color:#fff;font-size:clamp(20px,4vw,28px);font-weight:700;margin-bottom:6px}
-.band p{color:rgba(255,255,255,.85);font-size:13.5px;font-weight:300}
 .main{flex:1;display:flex;justify-content:center;padding:32px 16px 48px}
 .card{background:var(--white);border:1px solid var(--gray-line);border-top:3px solid var(--teal);border-radius:4px;width:100%;max-width:560px;padding:28px 28px 32px;box-shadow:0 2px 12px rgba(0,0,0,.06);align-self:flex-start}
 .steps{display:flex;gap:6px;margin-bottom:18px}
@@ -35,7 +34,7 @@ label.l{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
 label.l .req{color:var(--teal-dark);margin-left:2px}
 .hint{font-size:11.5px;color:var(--gray-text);margin-top:4px;line-height:1.6}
 input[type=text],input[type=tel],input[type=email]{width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:3px;font:inherit;font-size:14px;color:var(--text);background:#fff;outline:none;transition:.15s}
-input:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(23,165,137,.12)}
+input:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(27,94,58,.15)}
 input.error{border-color:var(--red);box-shadow:0 0 0 2px rgba(204,51,51,.1)}
 .err{color:var(--red);font-size:12.5px;margin-top:4px;min-height:1em}
 .opt{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--gray-line);border-radius:4px;margin-bottom:10px;cursor:pointer;transition:.15s}
@@ -44,8 +43,8 @@ input.error{border-color:var(--red);box-shadow:0 0 0 2px rgba(204,51,51,.1)}
 .opt input{margin-top:5px;accent-color:var(--teal)}
 .opt b{display:block;font-size:14px}.opt span{font-size:12.5px;color:var(--gray-text)}
 .notice{border-radius:6px;overflow:hidden;margin-bottom:18px}
-.notice .nh{background:var(--teal-dark);padding:7px 16px;color:rgba(255,255,255,.9);font-size:12px;font-weight:600}
-.notice .nb{padding:12px 16px;border:1px solid var(--gray-line);border-top:none;border-radius:0 0 6px 6px;color:var(--teal-dark);font-size:13px;line-height:1.8}
+.notice .nh{background:#B71C1C;padding:7px 16px;color:rgba(255,255,255,.95);font-size:12px;font-weight:600}
+.notice .nb{padding:12px 16px;border:1px solid #E8B4B4;border-top:none;border-radius:0 0 6px 6px;background:#FFF5F5;color:#B71C1C;font-size:13px;line-height:1.8;white-space:pre-line}
 .chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.7;cursor:pointer}
 .chk input{margin-top:5px;accent-color:var(--teal)}
 .row{display:flex;gap:10px;margin-top:22px}
@@ -53,12 +52,6 @@ button{font:inherit;font-size:15px;font-weight:600;padding:13px 18px;border-radi
 .pri{flex:1;background:var(--teal);color:#fff}.pri:hover{background:var(--teal-dark)}
 .sec{background:#fff;color:var(--teal-dark)}.sec:hover{background:var(--teal-light)}
 .opt.off{opacity:.45;cursor:not-allowed;background:#f3f3f3}.opt.off:hover{border-color:var(--gray-line)}
-.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px;margin-bottom:16px}
-.day{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;background:#fff;color:var(--text);border:1px solid var(--gray-line)}
-.day b{font-size:18px;line-height:1.2}.day small{font-size:11px;color:var(--gray-text)}
-.day:hover:not(:disabled){border-color:var(--teal);background:var(--teal-light)}
-.day.on{background:var(--teal);border-color:var(--teal);color:#fff}.day.on small{color:rgba(255,255,255,.85)}
-.day:disabled{background:#f3f3f3;border-color:var(--gray-line);color:#aaa;opacity:.6}
 button:disabled{background:#ccc;border-color:#ccc;color:#fff;cursor:not-allowed}
 dl{margin:0}dt{color:var(--gray-text);font-size:12px;margin-top:12px}dd{font-weight:600;word-break:break-all}
 .ve{border:1px solid #EEBEBE;border-left:4px solid var(--red);border-radius:3px;background:#FDF5F5;padding:12px 14px;color:#7A2020;font-size:13.5px;margin-top:14px}
@@ -76,10 +69,10 @@ footer{background:#2B2B2B;padding:18px 32px;text-align:center;font-size:11px;col
 </div>
 <header>
   <div class="hl">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlL0U2PIgQ6UVn9C2mhB8HXaf63qBx_OYxdQ&s" alt="CPA Thailand" onerror="this.style.display='none'">
+    <img src="logo-cpa.png" alt="CPA Thailand" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlL0U2PIgQ6UVn9C2mhB8HXaf63qBx_OYxdQ&s'}else{this.style.display='none'}">
     <div class="brand"><div class="name">CPA (Thailand)</div><div class="sub">Center for Professional Assessment</div></div>
   </div>
-  <div class="hr"><img src="https://perpignan.alfmed.com/wp-content/uploads/2025/03/TOEIC-logo-green.png" alt="TOEIC" onerror="this.style.display='none'"></div>
+  <div class="hr"><img src="logo-toeic.png" alt="TOEIC" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://perpignan.alfmed.com/wp-content/uploads/2025/03/TOEIC-logo-green.png'}else{this.style.display='none'}"></div>
 </header>
 <div class="band">
   <h1>แบบฟอร์มแจ้งความประสงค์ยกเลิกสอบ หรือเลื่อนรอบสอบสำหรับผู้สอบที่จองสอบ TOEIC Listening & Reading Paper - Based Testing ทาง CPA LINE SHOPPING</h1>
@@ -89,22 +82,24 @@ footer{background:#2B2B2B;padding:18px 32px;text-align:center;font-size:11px;col
 
 <script>
 // ▼ วาง URL ของ Web App (Google Apps Script ของฟอร์มนี้) ตรงนี้
-const API_URL = "https://script.google.com/macros/s/AKfycbysdxJNMrN5Okrg8abT9bdATKnsLlQ60HqMdjIVCOfW6V4ABRk9B8IgFqJKm_mQSlkVfQ/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzjy68CtCaK1lDz3gOASy4uObZ41Itg7_5XV4WTxd1Bmy8tSd6aAZK4Gf_cDbBlBnOW/exec";
 
+// ▼ วันสอบที่เลื่อนได้ (แก้ตรงนี้ และแก้ SESSIONS ใน Code.gs ให้ตรงกัน)
+const SESSIONS=[
+  {day:"2026-10-17",venue:"จังหวัดชลบุรี (Amari Bangsaen)"},
+  {day:"2026-10-31",venue:"จังหวัดระยอง (IRPC Technological college)"},
+  {day:"2026-11-28",venue:"จังหวัดระยอง (IRPC Technological college)"}
+];
+const TIMES=["09:00","14:00"];
 const DATES=(()=>{
   const D=['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
   const M=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
-  const BLOCK_DAYS={"2026-10-03":"ไม่เปิดให้จอง","2026-10-13":"วันหยุด ไม่เปิดให้จอง"};
-  const BLOCK_ROUNDS=["2026-10-17|13:30"], TIMES=["09:00","13:30"], out=[];
-  for(let t=Date.UTC(2026,8,29);t<=Date.UTC(2026,9,17);t+=864e5){
-    const dt=new Date(t),iso=dt.toISOString().slice(0,10);
-    TIMES.forEach(tm=>{
-      const v=iso+"|"+tm, off=!!BLOCK_DAYS[iso]||BLOCK_ROUNDS.includes(v);
-      out.push({v,day:iso,off,note:BLOCK_DAYS[iso]||(off?"ไม่เปิดให้จอง":""),
-        t:`วัน${D[dt.getUTCDay()]}ที่ ${dt.getUTCDate()} ${M[dt.getUTCMonth()]} ${dt.getUTCFullYear()+543} / รอบเวลา ${tm.replace(":",".")} น.`,
-        en:`${dt.getUTCDate()} ${M[dt.getUTCMonth()].slice(0,3)} · ${tm}`});
-    });
-  }
+  const out=[];
+  SESSIONS.forEach(s=>{
+    const dt=new Date(s.day+"T00:00:00Z");
+    const dl=`วัน${D[dt.getUTCDay()]}ที่ ${dt.getUTCDate()} ${M[dt.getUTCMonth()]} ${dt.getUTCFullYear()+543}`;
+    TIMES.forEach(tm=>out.push({v:s.day+"|"+tm,day:s.day,venue:s.venue,dl,t:`${dl} เวลา ${tm.replace(":",".")} น. ณ ${s.venue}`}));
+  });
   return out;
 })();
 const S={step:"info",hist:[],d:{id:"",name:"",phone:"",email:"",option:"",bank:"",acct:"",ack:false,date:""}};
@@ -166,7 +161,7 @@ function option(){
   const d=S.d;
   $("#view").innerHTML=title("เลือกความประสงค์")+`
   <label class="opt"><input type="radio" name="o" value="refund" ${d.option==="refund"?"checked":""}><div><b>1. ยกเลิกและขอ Refund ค่าสอบคืน (แจ้งความประสงค์ภายในวันที่ 30 กันยายน 2569 ก่อนเวลา 12.00 น.)</b><span>ดำเนินการคืนเงินภายใน 7 วัน</span></div></label>
-  <label class="opt"><input type="radio" name="o" value="move" ${d.option==="move"?"checked":""}><div><b>2. เลื่อนรอบสอบ</b><span>เฉพาะรอบสอบ Paper Based Testing วันที่ 29 กันยายน - 17 ตุลาคม 2569 เท่านั้น</span></div></label>
+  <label class="opt"><input type="radio" name="o" value="move" ${d.option==="move"?"checked":""}><div><b>2. เลื่อนรอบสอบ</b><span>เลือกได้เฉพาะวันเสาร์ที่ 17 ตุลาคม, 31 ตุลาคม และ 28 พฤศจิกายน 2569 เท่านั้น</span></div></label>
   <div class="err" id="e_o"></div>`+nav();
   $("#next").onclick=()=>{
     const c=document.querySelector('input[name=o]:checked');
@@ -196,29 +191,26 @@ function detail(){
     };
   }else{
     $("#view").innerHTML=title("เลื่อนรอบสอบ")+`
-    <div class="notice"><div class="nh">คำอธิบายเพิ่มเติม</div><div class="nb">สำหรับผู้ที่ต้องการเลื่อนรอบสอบ TOEIC Listening & Reading Paper - Based Testing CPA (Thailand) กำหนดวันและเวลาสอบ ดังนี้ 
-รอบสอบเวลา 9.00 น. และ 13.30 น. ของวันอังคารที่ 29 กันยายน - วันเสาร์ 17 ตุลาคม 2569 (ยกเว้นวันที่ 13 ตุลาคม 2569)
-กรณีผู้ที่ไม่สะดวกเลื่อนสอบตามวันและเวลาดังกล่าว ขอให้ผู้สอบทำการยกเลิก Refund ค่าสอบคืน และทำการจองสอบรอบใหม่ทาง CPA LINE SHOPPING หรือ CPA Call Center</div></div>`+
-    `<div style="font-size:13px;font-weight:600;margin-bottom:8px">1. เลือกวันสอบ</div>
-    <div class="days" id="days"></div>
-    <div class="hint" style="margin:-8px 0 16px">วันที่เป็นสีเทาไม่สามารถเลือกได้</div>
+    <div class="notice"><div class="nh">คำอธิบายเพิ่มเติม</div><div class="nb">สำหรับผู้ที่ต้องการเลื่อนรอบสอบ TOEIC Listening & Reading Paper - Based Testing CPA (Thailand) กำหนดวันและสถานที่สอบ ดังนี้
+1. จังหวัดชลบุรี (Amari Bangsaen) วันเสาร์ที่ 17 ตุลาคม 2569
+2. จังหวัดระยอง (IRPC Technological college) วันเสาร์ที่ 31 ตุลาคม 2569
+3. จังหวัดระยอง (IRPC Technological college) วันเสาร์ที่ 28 พฤศจิกายน 2569
+ทุกวันมี 2 รอบสอบ คือ เวลา 9.00 น. และ 14.00 น.
+กรณีผู้ที่ไม่สะดวกเลื่อนสอบตามวันและสถานที่ดังกล่าว ขอให้ผู้สอบทำการยกเลิก Refund ค่าสอบคืน และทำการจองสอบรอบใหม่ทาง CPA LINE SHOPPING หรือ CPA Call Center</div></div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px">1. เลือกวันสอบ</div>
+    <div id="days"></div>
     <div id="rounds"></div><div class="err" id="e_dt"></div>`+nav();
-    const TH=['อา','จ','อ','พ','พฤ','ศ','ส'];
-    const MS=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
     const byDay={};DATES.forEach(x=>(byDay[x.day]=byDay[x.day]||[]).push(x));
     let selDay=S.d.date?S.d.date.split("|")[0]:"";
+    $("#days").innerHTML=Object.keys(byDay).map(k=>{const x=byDay[k][0];
+      return `<label class="opt"><input type="radio" name="dy" value="${k}" ${k===selDay?"checked":""}><div><b>${x.dl}</b><span>${esc(x.venue)}</span></div></label>`}).join("");
     const draw=()=>{
-      $("#days").innerHTML=Object.keys(byDay).map(k=>{
-        const off=byDay[k].every(x=>x.off),dt=new Date(k+"T00:00:00Z");
-        return `<button type="button" class="day${k===selDay?" on":""}" data-d="${k}" ${off?"disabled":""}><small>${TH[dt.getUTCDay()]}</small><b>${dt.getUTCDate()}</b><small>${MS[dt.getUTCMonth()]}</small></button>`;
-      }).join("");
-      $("#rounds").innerHTML=selDay?`<div style="font-size:13px;font-weight:600;margin-bottom:8px">2. เลือกรอบสอบ</div>`+
-        byDay[selDay].map(x=>`<label class="opt${x.off?" off":""}"><input type="radio" name="dt" value="${x.v}" ${S.d.date===x.v?"checked":""} ${x.off?"disabled":""}><div><b>รอบ ${x.v.split("|")[1].replace(":",".")} น.</b><span>${x.off?x.note:x.t}</span></div></label>`).join(""):"";
+      $("#rounds").innerHTML=selDay?`<div style="font-size:13px;font-weight:600;margin:16px 0 8px">2. เลือกรอบสอบ</div>`+
+        byDay[selDay].map(x=>`<label class="opt"><input type="radio" name="dt" value="${x.v}" ${S.d.date===x.v?"checked":""}><div><b>รอบ ${x.v.split("|")[1].replace(":",".")} น.</b><span>${x.t}</span></div></label>`).join(""):"";
     };
     draw();
-    $("#days").onclick=e=>{
-      const b=e.target.closest(".day");if(!b||b.disabled)return;
-      selDay=b.dataset.d;
+    $("#days").onchange=e=>{
+      selDay=e.target.value;
       if(!S.d.date.startsWith(selDay))S.d.date="";
       $("#e_dt").textContent="";draw();
     };
@@ -238,7 +230,7 @@ function review(){
     <dt>เบอร์โทรศัพท์</dt><dd>${esc(d.phone)}</dd>
     <dt>อีเมล</dt><dd>${esc(d.email)}</dd>
     <dt>ความประสงค์</dt><dd>${d.option==="refund"?"ยกเลิกและขอ Refund ค่าสอบคืน":"เลื่อนรอบสอบ"}</dd>
-    ${d.option==="refund"?`<dt>ธนาคาร</dt><dd>${esc(d.bank)}</dd><dt>เลขบัญชี</dt><dd>${esc(d.acct)}</dd>`:`<dt>วันสอบใหม่</dt><dd>${dt?dt.t+" ":""}</dd>`}
+    ${d.option==="refund"?`<dt>ธนาคาร</dt><dd>${esc(d.bank)}</dd><dt>เลขบัญชี</dt><dd>${esc(d.acct)}</dd>`:`<dt>วันสอบใหม่</dt><dd>${dt?esc(dt.t):""}</dd>`}
   </dl><div id="e_sub"></div>`+nav("ยืนยันและส่งข้อมูล");
   $("#next").onclick=async()=>{
     const b=$("#next");b.disabled=true;b.textContent="กำลังส่งข้อมูล...";
@@ -254,7 +246,7 @@ function done(){
   const d=S.d,dt=DATES.find(x=>x.v===d.date);
   $("#view").innerHTML=`<div class="done"><div class="tick">✓</div>`+(d.option==="refund"
     ?`<p><b>ทางศูนย์ได้รับข้อมูลการขอยกเลิก Refund ค่าสอบคืนของท่านเรียบร้อยแล้ว</b><br>ทางศูนย์สอบจะดำเนินการโอนเงินคืนผ่านบัญชีธนาคารตามที่ท่านได้ระบุไว้ ภายใน 7 วัน หลังจากได้รับข้อมูล และตรวจสอบอย่างสมบูรณ์แล้ว</p>`
-    :`<p><b>เปลี่ยนแปลงรอบสอบให้ท่านเรียบร้อยแล้ว</b><br>รอบสอบใหม่: ${dt?dt.t:""} <br>ระบบส่งอีเมลยืนยันไปที่ ${esc(d.email)} แล้ว</p>`)+`</div>`;
+    :`<p><b>เปลี่ยนแปลงรอบสอบให้ท่านเรียบร้อยแล้ว</b><br>รอบสอบใหม่: ${dt?esc(dt.t):""}<br>ระบบส่งอีเมลยืนยันไปที่ ${esc(d.email)} แล้ว</p>`)+`</div>`;
 }
 render();
 </script>
