@@ -82,7 +82,7 @@ footer{background:#2B2B2B;padding:18px 32px;text-align:center;font-size:11px;col
 
 <script>
 // ▼ วาง URL ของ Web App (Google Apps Script ของฟอร์มนี้) ตรงนี้
-const API_URL = "https://script.google.com/macros/s/AKfycbzjy68CtCaK1lDz3gOASy4uObZ41Itg7_5XV4WTxd1Bmy8tSd6aAZK4Gf_cDbBlBnOW/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbz7VboIg8mlgl5KDC9FVXGCWEsWNKnIy5ec5hinz7gHAlRqXl2WZC5mogBbL94YYHI8/exec";
 
 // ▼ วันสอบที่เลื่อนได้ (แก้ตรงนี้ และแก้ SESSIONS ใน Code.gs ให้ตรงกัน)
 const SESSIONS=[
@@ -160,8 +160,9 @@ function info(){
 function option(){
   const d=S.d;
   $("#view").innerHTML=title("เลือกความประสงค์")+`
-  <label class="opt"><input type="radio" name="o" value="refund" ${d.option==="refund"?"checked":""}><div><b>1.  ยกเลิกสอบและขอคืนเงินค่าสอบ (แจ้งความประสงค์ภายในวันที่ 5 ตุลาคม 2569 ก่อนเวลา 12.00 น.)</b><span>CPA (Thailand) จะดำเนินการคืนเงินค่าสอบภายในวันที่ 14 ตุลาคม 2569</span></div></label>
-  <label class="opt"><input type="radio" name="o" value="move" ${d.option==="move"?"checked":""}><div><b>2. เลื่อนรอบสอบ</b><span>เลือกได้เฉพาะวันเสาร์ที่ 17 ตุลาคม, 31 ตุลาคม และ 28 พฤศจิกายน 2569 เท่านั้น</span></div></label>
+  <label class="opt"><input type="radio" name="o" value="refund" ${d.option==="refund"?"checked":""}><div><b>1.  ยกเลิกสอบและขอคืนเงินค่าสอบ (แจ้งความประสงค์ภายในวันที่ 7 ตุลาคม 2569 ก่อนเวลา 12.00 น.)</b><span>CPA (Thailand) จะดำเนินการคืนเงินค่าสอบภายในวันที่ 16 ตุลาคม 2569</span></div></label>
+  <label class="opt"><input type="radio" name="o" value="move" ${d.option==="move"?"checked":""}><div><b>2. เลื่อนรอบสอบ</b><span>เลือกรอบสอบ Open Testing ล่วงหน้าได้เป็นกรณีพิเศษ </span></div></label>
+  <label class="opt"><input type="radio" name="o" value="bkk" ${d.option==="bkk"?"checked":""}><div><b>3. เลื่อนรอบสอบมาสอบที่กรุงเทพ โดยไม่รับ Refund</b><span>ไม่ขอรับเงินค่าสอบคืน</span></div></label>
   <div class="err" id="e_o"></div>`+nav();
   $("#next").onclick=()=>{
     const c=document.querySelector('input[name=o]:checked');
@@ -180,7 +181,7 @@ function detail(){
     <div class="field"><label class="l" for="acct">เลขบัญชีธนาคาร <span class="req">*</span></label>
       <input id="acct" type="text" inputmode="numeric" maxlength="15" value="${esc(d.acct)}">
       <div class="hint">ต้องเป็นเลขบัญชีธนาคารที่มีชื่อบัญชีตรงกับชื่อ-นามสกุลของผู้สอบเท่านั้น (ไม่รับหมายเลข PromptPay)</div><div class="err" id="e_acct"></div></div>
-    <label class="chk"><input type="checkbox" id="ack" ${d.ack?"checked":""}><span>รับทราบ : CPA (Thailand) จะดำเนินการคืนเงินค่าสอบและค่าจัดส่ง EMS จำนวน 1,850 บาท ผ่านบัญชีธนาคารภายในวันที่ 14 ตุลาคม 2569</span></label>
+    <label class="chk"><input type="checkbox" id="ack" ${d.ack?"checked":""}><span>รับทราบ : CPA (Thailand) จะดำเนินการคืนเงินค่าสอบและค่าจัดส่ง EMS จำนวน 1,850 บาท ผ่านบัญชีธนาคารภายในวันที่ 16 ตุลาคม 2569</span></label>
     <div class="err" id="e_ack"></div>`+nav();
     $("#next").onclick=()=>{
       const bank=$("#bank").value.trim(),acct=$("#acct").value.replace(/\D/g,""),ack=$("#ack").checked;
@@ -189,9 +190,17 @@ function detail(){
       if(Object.values(e).some(Boolean))return;
       Object.assign(S.d,{bank,acct,ack});go("review");
     };
+  }else if(d.option==="bkk"){
+    $("#view").innerHTML=title("เลื่อนรอบสอบมาสอบที่กรุงเทพ")+`
+    <label class="chk"><input type="checkbox" id="ack" ${d.ack?"checked":""}><span>รับทราบ: ข้าพเจ้าประสงค์เลื่อนรอบสอบมาสอบที่กรุงเทพ และไม่ขอรับเงินค่าสอบคืน (No Refund)</span></label>
+    <div class="err" id="e_ack"></div>`+nav();
+    $("#next").onclick=()=>{
+      if(!$("#ack").checked){setErr("ack","กรุณากดรับทราบก่อนดำเนินการต่อ");return}
+      S.d.ack=true;go("review");
+    };
   }else{
     $("#view").innerHTML=title("เลื่อนรอบสอบ")+`
-    <div class="notice"><div class="nh">คำอธิบายเพิ่มเติม</div><div class="nb">กรณีไม่สะดวกเลื่อนรอบสอบในวันที่ทางศูนย์สอบฯ กำหนด ขอให้ทำการเลือกวิธีการขอคืนเงินค่าสอบ (Refund) และแจ้งความประสงค์ภายในวันที่ 5 ตุลาคม 2569 ก่อนเวลา 12.00 น. เท่านั้น หากเกินเวลาที่กำหนดจะไม่สามารถขอคืนเงินได้ทุกกรณี</div></div>
+    <div class="notice"><div class="nh">คำอธิบายเพิ่มเติม</div><div class="nb">กรณีไม่สะดวกเลื่อนรอบสอบในวันที่ทางศูนย์สอบฯ กำหนด ขอให้ทำการเลือกวิธีการขอคืนเงินค่าสอบ (Refund) และแจ้งความประสงค์ภายในวันที่ 7 ตุลาคม 2569 ก่อนเวลา 12.00 น. เท่านั้น หากเกินเวลาที่กำหนดจะไม่สามารถขอคืนเงินได้ทุกกรณี</div></div>
     <div style="font-size:13px;font-weight:600;margin-bottom:8px">1. เลือกวันสอบ</div>
     <div id="days"></div>
     <div id="rounds"></div><div class="err" id="e_dt"></div>`+nav();
@@ -224,8 +233,8 @@ function review(){
     <dt>ชื่อ-นามสกุล</dt><dd>${esc(d.name)}</dd>
     <dt>เบอร์โทรศัพท์</dt><dd>${esc(d.phone)}</dd>
     <dt>อีเมล</dt><dd>${esc(d.email)}</dd>
-    <dt>ความประสงค์</dt><dd>${d.option==="refund"?"ยกเลิกและขอ Refund ค่าสอบคืน":"เลื่อนรอบสอบ"}</dd>
-    ${d.option==="refund"?`<dt>ธนาคาร</dt><dd>${esc(d.bank)}</dd><dt>เลขบัญชี</dt><dd>${esc(d.acct)}</dd>`:`<dt>วันสอบใหม่</dt><dd>${dt?esc(dt.t):""}</dd>`}
+    <dt>ความประสงค์</dt><dd>${d.option==="refund"?"ยกเลิกและขอ Refund ค่าสอบคืน":d.option==="bkk"?"เลื่อนรอบสอบมาสอบที่กรุงเทพ โดยไม่รับ Refund":"เลื่อนรอบสอบ"}</dd>
+    ${d.option==="refund"?`<dt>ธนาคาร</dt><dd>${esc(d.bank)}</dd><dt>เลขบัญชี</dt><dd>${esc(d.acct)}</dd>`:d.option==="bkk"?"":`<dt>วันสอบใหม่</dt><dd>${dt?esc(dt.t):""}</dd>`}
   </dl><div id="e_sub"></div>`+nav("ยืนยันและส่งข้อมูล");
   $("#next").onclick=async()=>{
     const b=$("#next");b.disabled=true;b.textContent="กำลังส่งข้อมูล...";
@@ -241,6 +250,7 @@ function done(){
   const d=S.d,dt=DATES.find(x=>x.v===d.date);
   $("#view").innerHTML=`<div class="done"><div class="tick">✓</div>`+(d.option==="refund"
     ?`<p><b>ทางศูนย์ได้รับข้อมูลการขอยกเลิก Refund ค่าสอบคืนของท่านเรียบร้อยแล้ว</b><br>ทางศูนย์สอบจะดำเนินการโอนเงินคืนผ่านบัญชีธนาคารตามที่ท่านได้ระบุไว้ ภายใน 7 วัน หลังจากได้รับข้อมูล และตรวจสอบอย่างสมบูรณ์แล้ว</p>`
+    :d.option==="bkk"?`<p><b>ทางศูนย์ได้รับความประสงค์เลื่อนรอบสอบมาสอบที่กรุงเทพ (ไม่รับ Refund) ของท่านเรียบร้อยแล้ว</b></p>`
     :`<p><b>เปลี่ยนแปลงรอบสอบให้ท่านเรียบร้อยแล้ว</b><br>รอบสอบใหม่: ${dt?esc(dt.t):""}<br>ระบบส่งอีเมลยืนยันไปที่ ${esc(d.email)} แล้ว</p>`)+`</div>`;
 }
 render();
