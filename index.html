@@ -162,7 +162,7 @@ function option(){
   $("#view").innerHTML=title("เลือกความประสงค์")+`
   <label class="opt"><input type="radio" name="o" value="refund" ${d.option==="refund"?"checked":""}><div><b>1.  ยกเลิกสอบและขอคืนเงินค่าสอบ (แจ้งความประสงค์ภายในวันที่ 7 ตุลาคม 2569 ก่อนเวลา 12.00 น.)</b><span>CPA (Thailand) จะดำเนินการคืนเงินค่าสอบภายในวันที่ 16 ตุลาคม 2569</span></div></label>
   <label class="opt"><input type="radio" name="o" value="move" ${d.option==="move"?"checked":""}><div><b>2. เลื่อนรอบสอบ</b><span>เลือกรอบสอบ Open Testing ล่วงหน้าได้เป็นกรณีพิเศษ </span></div></label>
-  <label class="opt"><input type="radio" name="o" value="bkk" ${d.option==="bkk"?"checked":""}><div><b>3. เลื่อนรอบสอบมาสอบที่กรุงเทพ โดยไม่รับ Refund</b><span>ไม่ขอรับเงินค่าสอบคืน</span></div></label>
+  <label class="opt"><input type="radio" name="o" value="bkk" ${d.option==="bkk"?"checked":""}><div><b>3. เลื่อนรอบสอบมาสอบมาที่ศูนย์สอบกรุงเทพฯ</b><span> </span></div></label>
   <div class="err" id="e_o"></div>`+nav();
   $("#next").onclick=()=>{
     const c=document.querySelector('input[name=o]:checked');
@@ -192,7 +192,7 @@ function detail(){
     };
   }else if(d.option==="bkk"){
     $("#view").innerHTML=title("เลื่อนรอบสอบมาสอบที่กรุงเทพ")+`
-    <label class="chk"><input type="checkbox" id="ack" ${d.ack?"checked":""}><span>รับทราบ: ข้าพเจ้าประสงค์เลื่อนรอบสอบมาสอบที่กรุงเทพ และไม่ขอรับเงินค่าสอบคืน (No Refund)</span></label>
+    <label class="chk"><input type="checkbox" id="ack" ${d.ack?"checked":""}><span>หากต้องการสอบที่ศูนย์สอบกรุงเทพฯ กรุณาติดต่อ CPA Call Center : 02-260-7061 ต่อ 101 เพื่อทำการจองสอบรอบใหม่ (หากยืนยันเลื่อนกรุณากดเครื่องหมายถูกในช่องสี่เหลี่ยมและกดถัดไปเพื่อบันทึกข้อมูล)</span></label>
     <div class="err" id="e_ack"></div>`+nav();
     $("#next").onclick=()=>{
       if(!$("#ack").checked){setErr("ack","กรุณากดรับทราบก่อนดำเนินการต่อ");return}
