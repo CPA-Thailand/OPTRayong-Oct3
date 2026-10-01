@@ -82,7 +82,7 @@ footer{background:#2B2B2B;padding:18px 32px;text-align:center;font-size:11px;col
 
 <script>
 // ▼ วาง URL ของ Web App (Google Apps Script ของฟอร์มนี้) ตรงนี้
-const API_URL = "https://script.google.com/macros/s/AKfycbz7VboIg8mlgl5KDC9FVXGCWEsWNKnIy5ec5hinz7gHAlRqXl2WZC5mogBbL94YYHI8/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzQd1FJedn8QviP45Lj5wnt7egxW83gf9trcXQL42CUo799B7TDtymPtNhOZmcPhZg/exec";
 
 // ▼ วันสอบที่เลื่อนได้ (แก้ตรงนี้ และแก้ SESSIONS ใน Code.gs ให้ตรงกัน)
 const SESSIONS=[
@@ -162,7 +162,7 @@ function option(){
   $("#view").innerHTML=title("เลือกความประสงค์")+`
   <label class="opt"><input type="radio" name="o" value="refund" ${d.option==="refund"?"checked":""}><div><b>1.  ยกเลิกสอบและขอคืนเงินค่าสอบ (แจ้งความประสงค์ภายในวันที่ 7 ตุลาคม 2569 ก่อนเวลา 12.00 น.)</b><span>CPA (Thailand) จะดำเนินการคืนเงินค่าสอบภายในวันที่ 16 ตุลาคม 2569</span></div></label>
   <label class="opt"><input type="radio" name="o" value="move" ${d.option==="move"?"checked":""}><div><b>2. เลื่อนรอบสอบ</b><span>เลือกรอบสอบ Open Testing ล่วงหน้าได้เป็นกรณีพิเศษ </span></div></label>
-  <label class="opt"><input type="radio" name="o" value="bkk" ${d.option==="bkk"?"checked":""}><div><b>3. เลื่อนรอบสอบมาสอบมาที่ศูนย์สอบกรุงเทพฯ</b><span> </span></div></label>
+  <label class="opt"><input type="radio" name="o" value="bkk" ${d.option==="bkk"?"checked":""}><div><b>3. เลื่อนรอบสอบมาสอบมาที่ศูนย์สอบกรุงเทพฯ</b><span>สามารถเลื่อนรอบสอบได้ถึงรอบวันที่ 30 พฤศจิกายน 2569 (ไม่สามารถขอเงินคืนได้)</span></div></label>
   <div class="err" id="e_o"></div>`+nav();
   $("#next").onclick=()=>{
     const c=document.querySelector('input[name=o]:checked');
